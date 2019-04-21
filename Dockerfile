@@ -2,8 +2,9 @@ FROM debian:jessie
 ENV  DEBIAN_FRONTEND noninteractive
 
 RUN  apt-get -q update \
-&& apt-get install -y --no-install-recommends python3-pip python3-dev build-essential \
+&& RUN apt-get -y install python3 python3-dev python3-pip build-essential libgmp-dev libmpfr-dev libmpc-dev \
 && pip3 install Flask \
+&& pip3 install gmpy2 \
 && pip3 install netifaces \
 && apt-get purge -y --auto-remove python3-dev build-essential
 
